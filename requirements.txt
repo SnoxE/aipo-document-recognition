@@ -1,1 +1,2 @@
-pyqt5==5.15.10
+PySide6
+pyqt6
