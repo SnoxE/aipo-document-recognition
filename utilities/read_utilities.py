@@ -121,3 +121,4 @@ def wypiszDane(image,height,width):
             wypiszPaszport(image,height,width)
         else:
             wypiszLegitymacje(image,height,width)     
+            
