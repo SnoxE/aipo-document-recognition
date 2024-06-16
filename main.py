@@ -8,7 +8,7 @@ from PySide6.QtGui import QPixmap
 # You need to run the following command to generate the ui_form.py file
 #     pyside6-uic form.ui -o ui_form.py, or
 #     pyside2-uic form.ui -o ui_form.py
-from ui_form import Ui_Widget
+from ui.ui_form import Ui_Widget
 
 class Widget(QWidget):
     def __init__(self, parent=None):
