@@ -38,7 +38,7 @@ class Ui_Widget(object):
         self.photoField.setAlignment(Qt.AlignCenter)
         self.verticalLayoutWidget = QWidget(self.tab)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(140, 380, 281, 80))
+        self.verticalLayoutWidget.setGeometry(QRect(130, 370, 281, 82))
         self.uploadedDocumentActions = QVBoxLayout(self.verticalLayoutWidget)
         self.uploadedDocumentActions.setObjectName(u"uploadedDocumentActions")
         self.uploadedDocumentActions.setContentsMargins(0, 0, 0, 0)
@@ -47,14 +47,14 @@ class Ui_Widget(object):
 
         self.uploadedDocumentActions.addWidget(self.uploadButton)
 
-        self.pushButton_3 = QPushButton(self.verticalLayoutWidget)
-        self.pushButton_3.setObjectName(u"pushButton_3")
+        self.loadDataFromDocument = QPushButton(self.verticalLayoutWidget)
+        self.loadDataFromDocument.setObjectName(u"loadDataFromDocument")
 
-        self.uploadedDocumentActions.addWidget(self.pushButton_3)
+        self.uploadedDocumentActions.addWidget(self.loadDataFromDocument)
 
         self.verticalLayoutWidget_2 = QWidget(self.tab)
         self.verticalLayoutWidget_2.setObjectName(u"verticalLayoutWidget_2")
-        self.verticalLayoutWidget_2.setGeometry(QRect(620, 100, 291, 291))
+        self.verticalLayoutWidget_2.setGeometry(QRect(630, 150, 291, 231))
         self.personDataForm = QVBoxLayout(self.verticalLayoutWidget_2)
         self.personDataForm.setObjectName(u"personDataForm")
         self.personDataForm.setContentsMargins(0, 0, 0, 0)
@@ -83,25 +83,15 @@ class Ui_Widget(object):
 
         self.personDataForm.addWidget(self.lastName)
 
-        self.label_5 = QLabel(self.verticalLayoutWidget_2)
-        self.label_5.setObjectName(u"label_5")
-
-        self.personDataForm.addWidget(self.label_5)
-
-        self.dateOfBirth = QTextEdit(self.verticalLayoutWidget_2)
-        self.dateOfBirth.setObjectName(u"dateOfBirth")
-
-        self.personDataForm.addWidget(self.dateOfBirth)
-
         self.label_4 = QLabel(self.verticalLayoutWidget_2)
         self.label_4.setObjectName(u"label_4")
 
         self.personDataForm.addWidget(self.label_4)
 
-        self.sex = QTextEdit(self.verticalLayoutWidget_2)
-        self.sex.setObjectName(u"sex")
+        self.dateOfBirth = QTextEdit(self.verticalLayoutWidget_2)
+        self.dateOfBirth.setObjectName(u"dateOfBirth")
 
-        self.personDataForm.addWidget(self.sex)
+        self.personDataForm.addWidget(self.dateOfBirth)
 
         self.addOrUpdatePersonData = QPushButton(self.verticalLayoutWidget_2)
         self.addOrUpdatePersonData.setObjectName(u"addOrUpdatePersonData")
@@ -161,11 +151,10 @@ class Ui_Widget(object):
         Widget.setWindowTitle(QCoreApplication.translate("Widget", u"Widget", None))
         self.photoField.setText(QCoreApplication.translate("Widget", u"Tutaj pojawi si\u0119 zdj\u0119cie dokumentu", None))
         self.uploadButton.setText(QCoreApplication.translate("Widget", u"Wczytaj zdj\u0119cie", None))
-        self.pushButton_3.setText(QCoreApplication.translate("Widget", u"Wprowad\u017a dane r\u0119cznie", None))
+        self.loadDataFromDocument.setText(QCoreApplication.translate("Widget", u"Pobierz dane ze zdj\u0119cia", None))
         self.label.setText(QCoreApplication.translate("Widget", u"Otrzymane dane", None))
         self.label_2.setText(QCoreApplication.translate("Widget", u"Imi\u0119", None))
         self.label_3.setText(QCoreApplication.translate("Widget", u"Nazwisko", None))
-        self.label_5.setText(QCoreApplication.translate("Widget", u"P\u0142e\u0107", None))
         self.label_4.setText(QCoreApplication.translate("Widget", u"Data urodzenia", None))
         self.addOrUpdatePersonData.setText(QCoreApplication.translate("Widget", u"Zapisz w bazie danych", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("Widget", u"Wczytywanie dokument\u00f3w", None))

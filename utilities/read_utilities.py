@@ -28,6 +28,9 @@ def wypiszDowodOsobisty(img,height,width):
     print(nazwiskoDowodOsobisty(img,height,width))
     print(dataUrodzeniaDowodOsobisty(img,height,width))
 
+def wygenerujDaneDowodOsobisty(img,height,width):
+    return imieDowodOsobisty(img,height,width), nazwiskoDowodOsobisty(img,height,width), dataUrodzeniaDowodOsobisty(img,height,width)
+
 
 def dataUrodzeniaPaszport(img, height, width):
     cropped_image = img[(int)(height*0.345):(int)(height*0.345+height*0.06), (int)(width*0.29):(int)(width*0.56)]
@@ -51,6 +54,9 @@ def wypiszPaszport(img,height,width):
     print(imiePaszport(img,height,width))
     print(nazwiskoPaszport(img,height,width))
     print(dataUrodzeniaPaszport(img,height,width))
+
+def wygenerujDanePaszport(img,height,width):
+    return imiePaszport(img,height,width), nazwiskoPaszport(img,height,width), dataUrodzeniaPaszport(img,height,width)
 
 
 def dataUrodzeniaLegitymacja(img, height, width):
@@ -76,9 +82,11 @@ def wypiszLegitymacje(img,height,width):
     print(nazwiskoLegitymacja(img,height,width))
     print(dataUrodzeniaLegitymacja(img,height,width))
 
+def wygenerujDaneLegitymacja(img,height,width):
+    return imieLegitymacja(img,height,width), nazwiskoLegitymacja(img,height,width), dataUrodzeniaLegitymacja(img,height,width)
 
 def porownajDowod(image):
-    template = cv2.imread('DO.jpg')
+    template = cv2.imread('D:\\Zestawy\\8 sem\\AiPO\\Projekt\\aipo-document-recognition\\utilities\\DO.jpg')
     image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     template_gray = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
     result = cv2.matchTemplate(image_gray, template_gray, cv2.TM_CCOEFF_NORMED)
@@ -89,7 +97,7 @@ def porownajDowod(image):
 
 
 def porownajPaszport(image):
-    template = cv2.imread('PS.jpg')
+    template = cv2.imread('D:\\Zestawy\\8 sem\\AiPO\\Projekt\\aipo-document-recognition\\utilities\\PS.jpg')
     image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     template_gray = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
     result = cv2.matchTemplate(image_gray, template_gray, cv2.TM_CCOEFF_NORMED)
@@ -100,7 +108,7 @@ def porownajPaszport(image):
 
 
 def porownajLegitymacje(image):
-    template = cv2.imread('LE.jpg')
+    template = cv2.imread('D:\\Zestawy\\8 sem\\AiPO\\Projekt\\aipo-document-recognition\\utilities\\LE.jpg')
     image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     template_gray = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
     result = cv2.matchTemplate(image_gray, template_gray, cv2.TM_CCOEFF_NORMED)
@@ -121,4 +129,17 @@ def wypiszDane(image,height,width):
             wypiszPaszport(image,height,width)
         else:
             wypiszLegitymacje(image,height,width)     
+
+
+def wygenerujDane(image,height,width):
+    dow = porownajDowod(image)
+    pas = porownajPaszport(image)
+    leg = porownajLegitymacje(image)
+    if(dow > 80 or pas > 80 or leg > 80):
+        if(dow > pas and dow > leg):
+            return wygenerujDaneDowodOsobisty(image,height,width)
+        elif((pas > dow and pas > leg)):
+            return wygenerujDanePaszport(image,height,width)
+        else:
+            return wygenerujDaneLegitymacja(image,height,width)
             

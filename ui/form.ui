@@ -48,10 +48,10 @@
       <widget class="QWidget" name="verticalLayoutWidget">
        <property name="geometry">
         <rect>
-         <x>140</x>
-         <y>380</y>
+         <x>130</x>
+         <y>370</y>
          <width>281</width>
-         <height>80</height>
+         <height>82</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="uploadedDocumentActions">
@@ -63,9 +63,9 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_3">
+         <widget class="QPushButton" name="loadDataFromDocument">
           <property name="text">
-           <string>Wprowadź dane ręcznie</string>
+           <string>Pobierz dane ze zdjęcia</string>
           </property>
          </widget>
         </item>
@@ -74,10 +74,10 @@
       <widget class="QWidget" name="verticalLayoutWidget_2">
        <property name="geometry">
         <rect>
-         <x>620</x>
-         <y>100</y>
+         <x>630</x>
+         <y>150</y>
          <width>291</width>
-         <height>291</height>
+         <height>231</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="personDataForm">
@@ -109,16 +109,6 @@
          <widget class="QTextEdit" name="lastName"/>
         </item>
         <item>
-         <widget class="QLabel" name="label_5">
-          <property name="text">
-           <string>Płeć</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QTextEdit" name="dateOfBirth"/>
-        </item>
-        <item>
          <widget class="QLabel" name="label_4">
           <property name="text">
            <string>Data urodzenia</string>
@@ -126,7 +116,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QTextEdit" name="sex"/>
+         <widget class="QTextEdit" name="dateOfBirth"/>
         </item>
         <item>
          <widget class="QPushButton" name="addOrUpdatePersonData">
