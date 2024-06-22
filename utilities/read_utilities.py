@@ -1,9 +1,6 @@
 import cv2
-import matplotlib.pyplot as plt 
-import numpy as np
 from pytesseract import image_to_string
-import pytesseract
-
+import os
 
 def dataUrodzeniaDowodOsobisty(img, height, width):
     cropped_image = img[(int)(height*0.48):(int)(height*0.48+height*0.06), (int)(width*0.62):(int)(width*0.83)]
@@ -29,7 +26,10 @@ def wypiszDowodOsobisty(img,height,width):
     print(dataUrodzeniaDowodOsobisty(img,height,width))
 
 def wygenerujDaneDowodOsobisty(img,height,width):
-    return imieDowodOsobisty(img,height,width), nazwiskoDowodOsobisty(img,height,width), dataUrodzeniaDowodOsobisty(img,height,width)
+    return (imieDowodOsobisty(img,height,width),  
+           nazwiskoDowodOsobisty(img,height,width),  
+           dataUrodzeniaDowodOsobisty(img,height,width),   
+           "Dowód Osobisty")
 
 
 def dataUrodzeniaPaszport(img, height, width):
@@ -56,7 +56,10 @@ def wypiszPaszport(img,height,width):
     print(dataUrodzeniaPaszport(img,height,width))
 
 def wygenerujDanePaszport(img,height,width):
-    return imiePaszport(img,height,width), nazwiskoPaszport(img,height,width), dataUrodzeniaPaszport(img,height,width)
+    return (imiePaszport(img,height,width), 
+            nazwiskoPaszport(img,height,width), 
+            dataUrodzeniaPaszport(img,height,width), 
+            "Paszport")
 
 
 def dataUrodzeniaLegitymacja(img, height, width):
@@ -83,10 +86,14 @@ def wypiszLegitymacje(img,height,width):
     print(dataUrodzeniaLegitymacja(img,height,width))
 
 def wygenerujDaneLegitymacja(img,height,width):
-    return imieLegitymacja(img,height,width), nazwiskoLegitymacja(img,height,width), dataUrodzeniaLegitymacja(img,height,width)
+    return (imieLegitymacja(img,height,width), 
+            nazwiskoLegitymacja(img,height,width), 
+            dataUrodzeniaLegitymacja(img,height,width),
+            "Legitymacja")
 
 def porownajDowod(image):
-    template = cv2.imread('D:\\Zestawy\\8 sem\\AiPO\\Projekt\\aipo-document-recognition\\utilities\\DO.jpg')
+    template_path = os.path.join(os.path.dirname(__file__), 'DO.jpg')
+    template = cv2.imread(template_path)
     image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     template_gray = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
     result = cv2.matchTemplate(image_gray, template_gray, cv2.TM_CCOEFF_NORMED)
@@ -97,7 +104,8 @@ def porownajDowod(image):
 
 
 def porownajPaszport(image):
-    template = cv2.imread('D:\\Zestawy\\8 sem\\AiPO\\Projekt\\aipo-document-recognition\\utilities\\PS.jpg')
+    template_path = os.path.join(os.path.dirname(__file__), 'PS.jpg')
+    template = cv2.imread(template_path)
     image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     template_gray = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
     result = cv2.matchTemplate(image_gray, template_gray, cv2.TM_CCOEFF_NORMED)
@@ -108,7 +116,8 @@ def porownajPaszport(image):
 
 
 def porownajLegitymacje(image):
-    template = cv2.imread('D:\\Zestawy\\8 sem\\AiPO\\Projekt\\aipo-document-recognition\\utilities\\LE.jpg')
+    template_path = os.path.join(os.path.dirname(__file__), 'LE.jpg')
+    template = cv2.imread(template_path)
     image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     template_gray = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
     result = cv2.matchTemplate(image_gray, template_gray, cv2.TM_CCOEFF_NORMED)

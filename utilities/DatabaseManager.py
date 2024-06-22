@@ -31,22 +31,10 @@ class DatabaseManager():
         query.prepare("INSERT INTO person (first_name, last_name, date_of_birth) VALUES (:first_name, :last_name, :date_of_birth)")
         query.bindValue(":first_name", firstName)
         query.bindValue(":last_name", lastName)
-        query.bindValue(":date_of_birth", format_date(dateOfBirth))
+        query.bindValue(":date_of_birth", dateOfBirth)
         if not query.exec():
             print("Error inserting person")
             print('Last error', query.lastError().text())
         else:
             print("Person inserted successfully")
-
-    def readPeopleFromDatabase(self):
-        query = QSqlQuery("SELECT id, first_name, last_name, date_of_birth FROM person")
-        people = []
-        while query.next():
-            person = {
-                "id": query.value(0),
-                "first_name": query.value(1),
-                "last_name": query.value(2),
-                "date_of_birth": query.value(3)
-            }
-            people.append(person)
-        return people
+        query.finish()

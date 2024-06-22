@@ -1,7 +1,5 @@
 # This Python file uses the following encoding: utf-8
 import sys
-import numpy as np
-import cv2
 import pytesseract
 import os
 
@@ -11,6 +9,7 @@ from dotenv import load_dotenv
 
 
 from utilities.TableManager import TableManager
+from utilities.date_utilities import format_date
 from utilities.read_utilities import generateData
 from utilities.DatabaseManager import DatabaseManager
 # Important:
@@ -33,6 +32,7 @@ class Widget(QWidget):
         self.ui.loadDataFromDocument.clicked.connect(self.load_data_from_image)
         self.ui.addOrUpdatePersonData.clicked.connect(self.add_person_to_database)
         self.uploaded_image = None
+        self.document_type = None
         self.db_manager = DatabaseManager(
             os.getenv("DB_USERNAME"),
             os.getenv("DB_HOSTNAME"),
@@ -64,15 +64,17 @@ class Widget(QWidget):
             return
         
         height, width, _ = self.uploaded_image.shape
-        firstName, lastName, dateOfBirth = generateData(self.uploaded_image, height, width)
+        firstName, lastName, dateOfBirth, document_type = generateData(self.uploaded_image, height, width)
         self.ui.firstName.setText(firstName)
         self.ui.lastName.setText(lastName)
         self.ui.dateOfBirth.setText(dateOfBirth) 
+        self.document_type = document_type
+        self.ui.detectedDocumentType.setText(document_type)
 
     def add_person_to_database(self):
         firstName = self.ui.firstName.toPlainText()
         lastName = self.ui.lastName.toPlainText()
-        dateOfBirth = self.ui.dateOfBirth.toPlainText()
+        dateOfBirth = format_date(self.ui.dateOfBirth.toPlainText(), self.document_type)
         self.usersTable.addPersonToDatabase(firstName, lastName, dateOfBirth)
 
 
