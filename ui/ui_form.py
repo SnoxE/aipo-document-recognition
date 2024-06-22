@@ -16,8 +16,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QHBoxLayout, QHeaderView, QLabel,
-    QPushButton, QSizePolicy, QTabWidget, QTableWidget,
-    QTableWidgetItem, QTextEdit, QVBoxLayout, QWidget)
+    QPushButton, QSizePolicy, QTabWidget, QTableView,
+    QTextEdit, QVBoxLayout, QWidget)
 
 class Ui_Widget(object):
     def setupUi(self, Widget):
@@ -54,7 +54,7 @@ class Ui_Widget(object):
 
         self.verticalLayoutWidget_2 = QWidget(self.tab)
         self.verticalLayoutWidget_2.setObjectName(u"verticalLayoutWidget_2")
-        self.verticalLayoutWidget_2.setGeometry(QRect(630, 150, 291, 231))
+        self.verticalLayoutWidget_2.setGeometry(QRect(630, 150, 291, 328))
         self.personDataForm = QVBoxLayout(self.verticalLayoutWidget_2)
         self.personDataForm.setObjectName(u"personDataForm")
         self.personDataForm.setContentsMargins(0, 0, 0, 0)
@@ -101,39 +101,9 @@ class Ui_Widget(object):
         self.tabWidget.addTab(self.tab, "")
         self.tab_2 = QWidget()
         self.tab_2.setObjectName(u"tab_2")
-        self.usersTable = QTableWidget(self.tab_2)
-        if (self.usersTable.columnCount() < 4):
-            self.usersTable.setColumnCount(4)
-        __qtablewidgetitem = QTableWidgetItem()
-        self.usersTable.setHorizontalHeaderItem(0, __qtablewidgetitem)
-        __qtablewidgetitem1 = QTableWidgetItem()
-        self.usersTable.setHorizontalHeaderItem(1, __qtablewidgetitem1)
-        __qtablewidgetitem2 = QTableWidgetItem()
-        self.usersTable.setHorizontalHeaderItem(2, __qtablewidgetitem2)
-        __qtablewidgetitem3 = QTableWidgetItem()
-        self.usersTable.setHorizontalHeaderItem(3, __qtablewidgetitem3)
-        if (self.usersTable.rowCount() < 2):
-            self.usersTable.setRowCount(2)
-        __qtablewidgetitem4 = QTableWidgetItem()
-        self.usersTable.setItem(0, 0, __qtablewidgetitem4)
-        __qtablewidgetitem5 = QTableWidgetItem()
-        self.usersTable.setItem(0, 1, __qtablewidgetitem5)
-        __qtablewidgetitem6 = QTableWidgetItem()
-        self.usersTable.setItem(0, 2, __qtablewidgetitem6)
-        __qtablewidgetitem7 = QTableWidgetItem()
-        self.usersTable.setItem(0, 3, __qtablewidgetitem7)
-        __qtablewidgetitem8 = QTableWidgetItem()
-        self.usersTable.setItem(1, 0, __qtablewidgetitem8)
-        __qtablewidgetitem9 = QTableWidgetItem()
-        self.usersTable.setItem(1, 1, __qtablewidgetitem9)
-        __qtablewidgetitem10 = QTableWidgetItem()
-        self.usersTable.setItem(1, 2, __qtablewidgetitem10)
-        __qtablewidgetitem11 = QTableWidgetItem()
-        self.usersTable.setItem(1, 3, __qtablewidgetitem11)
+        self.usersTable = QTableView(self.tab_2)
         self.usersTable.setObjectName(u"usersTable")
-        self.usersTable.setGeometry(QRect(60, 80, 931, 251))
-        self.usersTable.setBaseSize(QSize(0, 0))
-        self.usersTable.setSortingEnabled(False)
+        self.usersTable.setGeometry(QRect(60, 80, 911, 241))
         self.tabWidget.addTab(self.tab_2, "")
 
         self.horizontalLayout.addWidget(self.tabWidget)
@@ -158,35 +128,6 @@ class Ui_Widget(object):
         self.label_4.setText(QCoreApplication.translate("Widget", u"Data urodzenia", None))
         self.addOrUpdatePersonData.setText(QCoreApplication.translate("Widget", u"Zapisz w bazie danych", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("Widget", u"Wczytywanie dokument\u00f3w", None))
-        ___qtablewidgetitem = self.usersTable.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("Widget", u"Imi\u0119", None));
-        ___qtablewidgetitem1 = self.usersTable.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("Widget", u"Nazwisko", None));
-        ___qtablewidgetitem2 = self.usersTable.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("Widget", u"P\u0142e\u0107", None));
-        ___qtablewidgetitem3 = self.usersTable.horizontalHeaderItem(3)
-        ___qtablewidgetitem3.setText(QCoreApplication.translate("Widget", u"Data urodzenia", None));
-
-        __sortingEnabled = self.usersTable.isSortingEnabled()
-        self.usersTable.setSortingEnabled(False)
-        ___qtablewidgetitem4 = self.usersTable.item(0, 0)
-        ___qtablewidgetitem4.setText(QCoreApplication.translate("Widget", u"Adam", None));
-        ___qtablewidgetitem5 = self.usersTable.item(0, 1)
-        ___qtablewidgetitem5.setText(QCoreApplication.translate("Widget", u"Abacki", None));
-        ___qtablewidgetitem6 = self.usersTable.item(0, 2)
-        ___qtablewidgetitem6.setText(QCoreApplication.translate("Widget", u"M", None));
-        ___qtablewidgetitem7 = self.usersTable.item(0, 3)
-        ___qtablewidgetitem7.setText(QCoreApplication.translate("Widget", u"01.01.1990", None));
-        ___qtablewidgetitem8 = self.usersTable.item(1, 0)
-        ___qtablewidgetitem8.setText(QCoreApplication.translate("Widget", u"Bogdan", None));
-        ___qtablewidgetitem9 = self.usersTable.item(1, 1)
-        ___qtablewidgetitem9.setText(QCoreApplication.translate("Widget", u"Babacki", None));
-        ___qtablewidgetitem10 = self.usersTable.item(1, 2)
-        ___qtablewidgetitem10.setText(QCoreApplication.translate("Widget", u"M", None));
-        ___qtablewidgetitem11 = self.usersTable.item(1, 3)
-        ___qtablewidgetitem11.setText(QCoreApplication.translate("Widget", u"01.01.1990", None));
-        self.usersTable.setSortingEnabled(__sortingEnabled)
-
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("Widget", u"Baza u\u017cytkownik\u00f3w", None))
     # retranslateUi
 

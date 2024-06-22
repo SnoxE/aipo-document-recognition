@@ -8,19 +8,19 @@ import pytesseract
 def dataUrodzeniaDowodOsobisty(img, height, width):
     cropped_image = img[(int)(height*0.48):(int)(height*0.48+height*0.06), (int)(width*0.62):(int)(width*0.83)]
     output = image_to_string(cropped_image, lang='eng+pol', config='--psm 6')
-    return output
+    return output.strip()
 
 
 def imieDowodOsobisty(img, height, width):
     cropped_image = img[(int)(height*0.35):(int)(height*0.35+height*0.1), (int)(width*0.35):(int)(width*0.75)]
     output = image_to_string(cropped_image, lang='eng+pol', config='--psm 6')
-    return output
+    return output.strip()
 
 
 def nazwiskoDowodOsobisty(img, height, width):
     cropped_image = img[(int)(height*0.235):(int)(height*0.235+height*0.1), (int)(width*0.35):(int)(width*0.75)]
     output = image_to_string(cropped_image, lang='eng+pol', config='--psm 6')
-    return output
+    return output.strip()
 
 
 def wypiszDowodOsobisty(img,height,width):
@@ -35,19 +35,19 @@ def wygenerujDaneDowodOsobisty(img,height,width):
 def dataUrodzeniaPaszport(img, height, width):
     cropped_image = img[(int)(height*0.345):(int)(height*0.345+height*0.06), (int)(width*0.29):(int)(width*0.56)]
     output = image_to_string(cropped_image, lang='eng+pol', config='--psm 6')
-    return output
+    return output.strip()
 
 
 def imiePaszport(img, height, width):
     cropped_image = img[(int)(height*0.275):(int)(height*0.275+height*0.05), (int)(width*0.3):(int)(width*0.55)]
     output = image_to_string(cropped_image, lang='eng+pol', config='--psm 6')
-    return output
+    return output.strip()
 
 
 def nazwiskoPaszport(img, height, width):
     cropped_image = img[(int)(height*0.2):(int)(height*0.2+height*0.05), (int)(width*0.3):(int)(width*0.55)]
     output = image_to_string(cropped_image, lang='eng+pol', config='--psm 6')
-    return output
+    return output.strip()
 
 
 def wypiszPaszport(img,height,width):
@@ -62,19 +62,19 @@ def wygenerujDanePaszport(img,height,width):
 def dataUrodzeniaLegitymacja(img, height, width):
     cropped_image = img[(int)(height*0.755):(int)(height*0.755+height*0.07), (int)(width*0.185):(int)(width*0.35)]
     output = image_to_string(cropped_image, lang='eng+pol', config='--psm 6')
-    return output
+    return output.strip()
 
 
 def imieLegitymacja(img, height, width):
     cropped_image = img[(int)(height*0.4):(int)(height*0.4+height*0.05), (int)(width*0.35):(int)(width*0.65)]
     output = image_to_string(cropped_image, lang='eng+pol', config='--psm 6')
-    return output
+    return output.strip()
 
 
 def nazwiskoLegitymacja(img, height, width):
     cropped_image = img[(int)(height*0.46):(int)(height*0.46+height*0.05), (int)(width*0.35):(int)(width*0.65)]
     output = image_to_string(cropped_image, lang='eng+pol', config='--psm 6')
-    return output
+    return output.strip()
 
 
 def wypiszLegitymacje(img,height,width):
@@ -131,7 +131,7 @@ def wypiszDane(image,height,width):
             wypiszLegitymacje(image,height,width)     
 
 
-def wygenerujDane(image,height,width):
+def generateData(image,height,width):
     dow = porownajDowod(image)
     pas = porownajPaszport(image)
     leg = porownajLegitymacje(image)

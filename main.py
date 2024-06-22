@@ -5,41 +5,47 @@ import cv2
 import pytesseract
 import os
 
-from PySide6.QtWidgets import QApplication, QWidget, QFileDialog
+from PySide6.QtWidgets import QApplication, QWidget, QFileDialog, QPushButton
 from PySide6.QtGui import QPixmap
 from dotenv import load_dotenv
 
-from utilities.read_utilities import wygenerujDane
+
+from utilities.TableManager import TableManager
+from utilities.read_utilities import generateData
 from utilities.DatabaseManager import DatabaseManager
-
-
 # Important:
 # You need to run the following command to generate the ui_form.py file
 #     pyside6-uic form.ui -o ui_form.py, or
 #     pyside2-uic form.ui -o ui_form.py
 from ui.ui_form import Ui_Widget
 
-pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
+
+load_dotenv(verbose=True, override=True)
+pytesseract.pytesseract.tesseract_cmd = os.getenv("PYTESSERACT_PATH")
 
 
 class Widget(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
-        load_dotenv()
-
         self.ui = Ui_Widget()
         self.ui.setupUi(self)
         self.ui.uploadButton.clicked.connect(self.upload_photo)
         self.ui.loadDataFromDocument.clicked.connect(self.load_data_from_image)
+        self.ui.addOrUpdatePersonData.clicked.connect(self.add_person_to_database)
         self.uploaded_image = None
-        self.db = DatabaseManager(
+        self.db_manager = DatabaseManager(
             os.getenv("DB_USERNAME"),
-            os.getenv("DB_HOSTNAME"), 
+            os.getenv("DB_HOSTNAME"),
             os.getenv("DB_USERNAME"),
             os.getenv("DB_PASSWORD")
         )
-        self.db.open()
+        self.db_manager.openConnection()
+        self.usersTable = TableManager("person", self.ui.usersTable, self.db_manager)
 
+    def closeEvent(self, event):
+        self.usersTable.destroy()
+        self.db_manager.closeConnection()
+        event.accept()
 
     def upload_photo(self):
         options = QFileDialog.Options()
@@ -58,14 +64,17 @@ class Widget(QWidget):
             return
         
         height, width, _ = self.uploaded_image.shape
-        firstName, lastName, dateOfBirth = wygenerujDane(self.uploaded_image, height, width)
+        firstName, lastName, dateOfBirth = generateData(self.uploaded_image, height, width)
         self.ui.firstName.setText(firstName)
         self.ui.lastName.setText(lastName)
         self.ui.dateOfBirth.setText(dateOfBirth) 
 
-    def closeEvent(self, event):
-        self.db.close()
-        event.accept()
+    def add_person_to_database(self):
+        firstName = self.ui.firstName.toPlainText()
+        lastName = self.ui.lastName.toPlainText()
+        dateOfBirth = self.ui.dateOfBirth.toPlainText()
+        self.usersTable.addPersonToDatabase(firstName, lastName, dateOfBirth)
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
