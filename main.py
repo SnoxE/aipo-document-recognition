@@ -1,12 +1,16 @@
 # This Python file uses the following encoding: utf-8
 import sys
-
-from PySide6.QtWidgets import QApplication, QWidget, QFileDialog
-from PySide6.QtGui import QPixmap
-from utilities.read_utilities import imieDowodOsobisty, wygenerujDane, wygenerujDaneDowodOsobisty
 import numpy as np
 import cv2
 import pytesseract
+import os
+
+from PySide6.QtWidgets import QApplication, QWidget, QFileDialog
+from PySide6.QtGui import QPixmap
+from dotenv import load_dotenv
+
+from utilities.read_utilities import wygenerujDane
+from utilities.DatabaseManager import DatabaseManager
 
 
 # Important:
@@ -15,16 +19,27 @@ import pytesseract
 #     pyside2-uic form.ui -o ui_form.py
 from ui.ui_form import Ui_Widget
 
-pytesseract.pytesseract.tesseract_cmd = 'C:\Program Files\Tesseract-OCR\\tesseract.exe'
+pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
+
 
 class Widget(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
+        load_dotenv()
+
         self.ui = Ui_Widget()
         self.ui.setupUi(self)
         self.ui.uploadButton.clicked.connect(self.upload_photo)
         self.ui.loadDataFromDocument.clicked.connect(self.load_data_from_image)
         self.uploaded_image = None
+        self.db = DatabaseManager(
+            os.getenv("DB_USERNAME"),
+            os.getenv("DB_HOSTNAME"), 
+            os.getenv("DB_USERNAME"),
+            os.getenv("DB_PASSWORD")
+        )
+        self.db.open()
+
 
     def upload_photo(self):
         options = QFileDialog.Options()
@@ -46,8 +61,11 @@ class Widget(QWidget):
         firstName, lastName, dateOfBirth = wygenerujDane(self.uploaded_image, height, width)
         self.ui.firstName.setText(firstName)
         self.ui.lastName.setText(lastName)
-        self.ui.dateOfBirth.setText(dateOfBirth)
+        self.ui.dateOfBirth.setText(dateOfBirth) 
 
+    def closeEvent(self, event):
+        self.db.close()
+        event.accept()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
