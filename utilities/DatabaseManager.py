@@ -42,9 +42,14 @@ class DatabaseManager():
         
         while query.next():
             person_data["id"] = query.value(0)
-            person_data["distance"] = query.value(1)
+            person_data["first_name"] = query.value(1)
+            person_data["last_name"] = query.value(2)
+            person_data["date_of_birth"] = query.value(4)
+            person_data["face_data"] = query.value(8)
+            person_data["distance"] = query.value(9)
 
         query.finish()
+        
         return person_data
 
     def addPerson(self, firstName, lastName, dateOfBirth, face_embedding):
@@ -77,25 +82,3 @@ class DatabaseManager():
         else:
             show_message_box_on_success("Poprawnie zaktualizowano dane osoby")
         query.finish()
-
-
-    def getPersonById(self, id):
-        query = QSqlQuery()
-        query.prepare("SELECT * FROM person WHERE id = :id")
-        query.bindValue(":id", id)
-
-        data = {}
-        if not query.exec():
-            output_text = "Błąd przy pobieraniu osoby z bazy danych.\n"
-            output_text += f'Powód: {query.lastError().text()}'
-            show_message_box_on_error(output_text)
-        else:
-            while query.next():
-                data["id"] = query.value(0)
-                data["first_name"] = query.value(1)
-                data["last_name"] = query.value(2)
-                data["date_of_birth"] = query.value(4)
-                data["face_data"] = query.value(8)
-        
-        query.finish()
-        return data

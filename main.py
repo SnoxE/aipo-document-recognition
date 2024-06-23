@@ -86,8 +86,6 @@ class Widget(QWidget):
         self.ui.changeUserDataButton.setEnabled(False)
         self.ui.detectedPersonData.setText("")
         
-        print(f"Closest person: {self.closest_person}")
-        
         if 'id' not in self.closest_person.keys():
             self.ui.detectedPersonData.setText("Nie znaleziono osoby w bazie danych")
             return
@@ -98,7 +96,6 @@ class Widget(QWidget):
         firstName = self.ui.firstName.toPlainText()
         lastName = self.ui.lastName.toPlainText()
         dateOfBirth = format_date(self.ui.dateOfBirth.toPlainText(), self.document_type)
-        print(self.closest_person)
         self.usersTable.addPersonToDatabase(
             firstName, 
             lastName, 
@@ -106,6 +103,7 @@ class Widget(QWidget):
             self.face_embedding,
         )
         
+        self.closest_person = self.usersTable.db_manager.getPersonByFaceEmbedding(self.face_embedding)
         self.update_detected_person_data()
         
         
@@ -121,12 +119,12 @@ class Widget(QWidget):
             self.closest_person
         )
         
+        self.closest_person = self.usersTable.db_manager.getPersonByFaceEmbedding(self.face_embedding)
         self.update_detected_person_data()
         
     def update_detected_person_data(self):
-        closest_person_data = self.usersTable.db_manager.getPersonById(self.closest_person['id'])
         # zamień embedding zapisany w bazie danych jako string na listę floatów
-        closest_person_face_embedding =  list(map(lambda x: float(x), closest_person_data['face_data'].replace('{', '').replace('}','').strip().split(',')))
+        closest_person_face_embedding =  list(map(lambda x: float(x), self.closest_person['face_data'].replace('{', '').replace('}','').strip().split(',')))
         similarity = cosine_similarity(self.face_embedding, closest_person_face_embedding)  
         
         found_similar_person = self.closest_person is not None and similarity > 0.85
@@ -135,7 +133,7 @@ class Widget(QWidget):
         self.ui.changeUserDataButton.setEnabled(found_similar_person)
         
         if found_similar_person:
-            self.ui.detectedPersonData.setText(format_person_output(closest_person_data, ['id', 'face_data']))
+            self.ui.detectedPersonData.setText(format_person_output(self.closest_person, omit_keys=['id', 'face_data', 'distance']))
         else:
             self.ui.detectedPersonData.setText("Nie znaleziono osoby w bazie danych")
 
