@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1065</width>
-    <height>615</height>
+    <height>641</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,185 +17,279 @@
    <item row="0" column="0">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
        <string>Wczytywanie dokumentów</string>
       </attribute>
-      <widget class="QWidget" name="verticalLayoutWidget">
+      <widget class="QWidget" name="verticalLayoutWidget_2">
        <property name="geometry">
         <rect>
-         <x>80</x>
-         <y>50</y>
-         <width>471</width>
-         <height>399</height>
+         <x>570</x>
+         <y>20</y>
+         <width>431</width>
+         <height>551</height>
         </rect>
        </property>
-       <layout class="QVBoxLayout" name="uploadedDocumentActions">
+       <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <spacer name="verticalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
+         <widget class="QGroupBox" name="groupBox">
+          <property name="maximumSize">
            <size>
-            <width>20</width>
-            <height>40</height>
+            <width>16777215</width>
+            <height>120</height>
            </size>
           </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QLabel" name="photoField">
-          <property name="autoFillBackground">
-           <bool>false</bool>
+          <property name="title">
+           <string>Otrzymane dane z bazy danych</string>
           </property>
-          <property name="text">
-           <string>Tutaj pojawi się zdjęcie dokumentu</string>
-          </property>
-          <property name="scaledContents">
-           <bool>true</bool>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
+          <widget class="QTextBrowser" name="detectedPersonData">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>30</y>
+             <width>411</width>
+             <height>81</height>
+            </rect>
+           </property>
+          </widget>
          </widget>
         </item>
         <item>
-         <spacer name="verticalSpacer">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
+         <widget class="QGroupBox" name="groupBox_2">
+          <property name="title">
+           <string>Otrzymane dane ze zdjęcia</string>
           </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QPushButton" name="uploadButton">
-          <property name="text">
-           <string>Wczytaj zdjęcie</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="loadDataFromDocument">
-          <property name="text">
-           <string>Pobierz dane ze zdjęcia</string>
-          </property>
+          <widget class="QWidget" name="">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>40</y>
+             <width>391</width>
+             <height>353</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="personDataForm">
+            <item>
+             <widget class="QLabel" name="label_2">
+              <property name="text">
+               <string>Imię</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTextEdit" name="firstName">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>40</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_3">
+              <property name="text">
+               <string>Nazwisko</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTextEdit" name="lastName">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>40</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_4">
+              <property name="text">
+               <string>Data urodzenia/PESEL</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTextEdit" name="dateOfBirth">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>40</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="changeUserDataButton">
+              <property name="text">
+               <string>Zmień dane</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="addPersonData">
+              <property name="text">
+               <string>Dodaj do bazy danych</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_2">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_2">
+                <item>
+                 <widget class="QLabel" name="label_5">
+                  <property name="text">
+                   <string>Wykryty rodzaj dokumentu:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="detectedDocumentType">
+                  <property name="text">
+                   <string>Brak</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
          </widget>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="verticalLayoutWidget_3">
+      <widget class="QGroupBox" name="groupBox_3">
        <property name="geometry">
         <rect>
-         <x>650</x>
-         <y>90</y>
-         <width>298</width>
-         <height>331</height>
+         <x>20</x>
+         <y>20</y>
+         <width>521</width>
+         <height>551</height>
         </rect>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout_2">
-        <item>
-         <layout class="QVBoxLayout" name="personDataForm">
-          <item>
-           <widget class="QLabel" name="label">
-            <property name="text">
-             <string>Otrzymane dane</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_2">
-            <property name="text">
-             <string>Imię</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QTextEdit" name="firstName"/>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_3">
-            <property name="text">
-             <string>Nazwisko</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QTextEdit" name="lastName"/>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_4">
-            <property name="text">
-             <string>Data urodzenia</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QTextEdit" name="dateOfBirth"/>
-          </item>
-          <item>
-           <widget class="QPushButton" name="addOrUpdatePersonData">
-            <property name="text">
-             <string>Zapisz w bazie danych</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="verticalSpacer_3">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>0</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
-          <item>
-           <widget class="QLabel" name="label_5">
-            <property name="text">
-             <string>Wykryty rodzaj dokumentu:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="detectedDocumentType">
-            <property name="text">
-             <string>Brak</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-       </layout>
+       <property name="title">
+        <string>Wczytywanie zdjęcia</string>
+       </property>
+       <widget class="QWidget" name="verticalLayoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>90</y>
+          <width>471</width>
+          <height>399</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="uploadedDocumentActions">
+         <item>
+          <spacer name="verticalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="photoField">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>400</height>
+            </size>
+           </property>
+           <property name="sizeIncrement">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="baseSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Tutaj pojawi się zdjęcie dokumentu</string>
+           </property>
+           <property name="scaledContents">
+            <bool>true</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="uploadButton">
+           <property name="text">
+            <string>Wczytaj zdjęcie</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="loadDataFromDocument">
+           <property name="text">
+            <string>Pobierz dane ze zdjęcia</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
       </widget>
      </widget>
      <widget class="QWidget" name="tab_2">
       <attribute name="title">
        <string>Baza użytkowników</string>
       </attribute>
-      <widget class="QTableView" name="usersTable">
+      <widget class="QGroupBox" name="groupBox_4">
        <property name="geometry">
         <rect>
-         <x>60</x>
-         <y>80</y>
-         <width>911</width>
-         <height>391</height>
+         <x>20</x>
+         <y>30</y>
+         <width>981</width>
+         <height>541</height>
         </rect>
        </property>
+       <property name="title">
+        <string>Dane użytkowników</string>
+       </property>
+       <widget class="QTableView" name="usersTable">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>50</y>
+          <width>911</width>
+          <height>461</height>
+         </rect>
+        </property>
+       </widget>
       </widget>
      </widget>
     </widget>

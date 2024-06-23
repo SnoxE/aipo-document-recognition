@@ -4,3 +4,6 @@ python-dotenv
 opencv-python
 pytesseract
 numpy
+keras_facenet
+scipy
+tensorflow
