@@ -4,8 +4,10 @@ import numpy as np
 from numpy.linalg import norm
 import matplotlib.pyplot as plt
 
+def embedding_to_string(embedding):
+    return '{' +  ','.join(str(x) for x in embedding) + '}'
 
-def detect_faces(image_path: str) -> cv2.image:
+def detect_faces(image_path: str):
     face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
     image = cv2.imread(image_path)

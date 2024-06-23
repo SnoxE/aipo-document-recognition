@@ -1,2 +1,9 @@
 PySide6
 pyqt6
+python-dotenv
+opencv-python
+pytesseract
+numpy
+keras_facenet
+scipy
+tensorflow
