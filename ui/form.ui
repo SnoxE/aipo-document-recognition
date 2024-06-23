@@ -266,7 +266,7 @@
      </widget>
      <widget class="QWidget" name="tab_2">
       <attribute name="title">
-       <string>Baza użytkowników</string>
+       <string>Baza osób</string>
       </attribute>
       <widget class="QGroupBox" name="groupBox_4">
        <property name="geometry">

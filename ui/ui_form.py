@@ -197,6 +197,6 @@ class Ui_Widget(object):
         self.loadDataFromDocument.setText(QCoreApplication.translate("Widget", u"Pobierz dane ze zdj\u0119cia", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("Widget", u"Wczytywanie dokument\u00f3w", None))
         self.groupBox_4.setTitle(QCoreApplication.translate("Widget", u"Dane u\u017cytkownik\u00f3w", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("Widget", u"Baza u\u017cytkownik\u00f3w", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("Widget", u"Baza os\u00f3b", None))
     # retranslateUi
 

@@ -21,6 +21,13 @@ C:\Program Files\PostgreSQL\16\bin
 pip install -r requirements.txt
 ```
 
+4. In the .env file, set environment variables:
+
+- `DB_USERNAME` - username and the database name
+- `DB_PASSWORD` - password to database
+- `DB_HOSTNAME` - database hostname
+- `PYTESSERACT_PATH` - path to `tesseract` executable (required, if running app on Windows)
+
 3. Run the program
 
 ```py
